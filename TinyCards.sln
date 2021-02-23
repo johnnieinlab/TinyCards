@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCards.Core", "TinyCards.Core\TinyCards.Core.csproj", "{C7482ADE-46DE-4401-B7BE-14699BDEE811}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyCards.Core", "TinyCards.Core\TinyCards.Core.csproj", "{C7482ADE-46DE-4401-B7BE-14699BDEE811}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFMigrations", "EFMigrations\EFMigrations.csproj", "{ABFE6F16-D8B6-4773-9E6D-209287DCC6BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFMigrations", "EFMigrations\EFMigrations.csproj", "{ABFE6F16-D8B6-4773-9E6D-209287DCC6BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyCards.Api", "..\TinyCards.Api\TinyCards.Api.csproj", "{1B844182-42D5-4575-A64D-358404426032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TinyCards.Api", "TinyCards.Api\TinyCards.Api.csproj", "{D23226F0-C85B-4B4A-938C-B42F01633A8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{ABFE6F16-D8B6-4773-9E6D-209287DCC6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABFE6F16-D8B6-4773-9E6D-209287DCC6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABFE6F16-D8B6-4773-9E6D-209287DCC6BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1B844182-42D5-4575-A64D-358404426032}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1B844182-42D5-4575-A64D-358404426032}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1B844182-42D5-4575-A64D-358404426032}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1B844182-42D5-4575-A64D-358404426032}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D23226F0-C85B-4B4A-938C-B42F01633A8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D23226F0-C85B-4B4A-938C-B42F01633A8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D23226F0-C85B-4B4A-938C-B42F01633A8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D23226F0-C85B-4B4A-938C-B42F01633A8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
