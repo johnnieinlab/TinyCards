@@ -97,16 +97,51 @@ namespace TinyCards.Core.Service
         public async Task<CardLimit> GetCardLimitAsync(string cardNumber, TransactionType type)
         {
             return await _dbContext.Set<CardLimit>()
-                .Where(c => c.Card.Number == cardNumber)
+                .Where(c => c.CardNumber == cardNumber)
                 .Where(c => c.LimitType == type)
                 .SingleOrDefaultAsync();
         }
 
         public async Task<CardLimit> CreateLimitAsync(string cardNumber, decimal amount, TransactionType type)
         {
-            var limit = new CardLimit { AggregateAmount = amount, LimitType = type, Card = await GetByNumberAsync(cardNumber) };
+            var limit = new CardLimit { AggregateAmount = amount, LimitType = type, CardNumber = (await GetByNumberAsync(cardNumber)).Number };
             await _dbContext.AddAsync(limit);
             return limit;
+        }
+
+        public async Task<Result<Card>> Register(string cardNumber, decimal amount)
+        {
+            try
+            {
+                var card = new Card { Id = Guid.NewGuid(), Number = cardNumber, Balance = amount };
+                var today = DateTime.Today.ToString("yyyy-MM-dd");
+                var cardLimits = new List<CardLimit>
+                {
+                    new CardLimit
+                    {
+                        CardNumber = cardNumber,
+                        IsoDate = today,
+                        AggregateAmount = 0,
+                        LimitType = TransactionType.CardPresent
+                    },
+                    new CardLimit
+                    {
+                        CardNumber = cardNumber,
+                        IsoDate = today,
+                        AggregateAmount = 0,
+                        LimitType = TransactionType.ECommerse
+                    }
+                };
+                _dbContext.Add(card);
+                _dbContext.Add(cardLimits);
+                await _dbContext.SaveChangesAsync();
+                return new Result<Card> { Code = ResultCode.Success, Data = card };
+            }
+            catch (Exception e)
+            {
+                return new Result<Card> { Code = ResultCode.Error, ErrorMessage = $"Create card failed [{e.Message}]" };
+            }
+
         }
     }
 }

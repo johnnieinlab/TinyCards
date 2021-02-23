@@ -9,7 +9,7 @@ namespace TinyCards.Core.Model
 {
     class CardLimit
     {
-        public Card Card { get; set; }
+        public string CardNumber { get; set; }
         public string IsoDate { get; set; }
         public TransactionType LimitType { get; set; }
         public decimal AggregateAmount { get; set; }

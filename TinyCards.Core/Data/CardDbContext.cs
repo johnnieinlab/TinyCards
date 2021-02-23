@@ -20,6 +20,21 @@ namespace TinyCards.Core.Data
 
             modelBuilder.Entity<Card>()
                 .ToTable("Card");
+            modelBuilder.Entity<Card>()
+                .HasIndex(c => c.Number)
+                .IsUnique();
+
+            modelBuilder.Entity<CardLimit>()
+                .ToTable("CardLimit");
+            
+            modelBuilder.Entity<CardLimit>()
+            .HasKey(c => new { c.CardNumber, c.LimitType });
+
+            modelBuilder.Entity<CardLimit>()
+            .HasIndex(c => c.LimitType);
+
+            modelBuilder.Entity<Transaction>()
+                .ToTable("Transaction");
 
         }
     }

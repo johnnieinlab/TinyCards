@@ -12,6 +12,9 @@ namespace TinyCards.Core.Interface
     {
         public Task<Result<Transaction>> AuthorizeAsync(string cardNumber, decimal amount, TransactionType type, string details);
         public Task<Card> GetByNumberAsync(string cardNumber);
+
+        public Task<Result<Card>> Register(string cardNumber, decimal amount);
+
         public Task<Card> ChargeAsync(string cardNumber, decimal amount);
 
         public Task<CardLimit> GetCardLimitAsync(string cardNumber, TransactionType type);
