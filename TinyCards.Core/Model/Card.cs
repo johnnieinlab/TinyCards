@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TinyCards.Core.Model
 {
-    class Card
+    public class Card
     {
         public Guid Id { get; set; }
         public string Number { get; set; }

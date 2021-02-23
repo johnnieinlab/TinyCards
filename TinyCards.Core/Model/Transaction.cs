@@ -7,7 +7,7 @@ using TinyCards.Core.Constant;
 
 namespace TinyCards.Core.Model
 {
-    class Transaction
+    public class Transaction
     {
         public Guid Id { get; set; }
         public Card Card { get; set; }

@@ -7,7 +7,7 @@ using TinyCards.Core.Constant;
 
 namespace TinyCards.Core.Model
 {
-    class CardLimit
+    public class CardLimit
     {
         public string CardNumber { get; set; }
         public string IsoDate { get; set; }

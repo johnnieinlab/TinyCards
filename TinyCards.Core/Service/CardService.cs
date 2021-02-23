@@ -109,7 +109,7 @@ namespace TinyCards.Core.Service
             return limit;
         }
 
-        public async Task<Result<Card>> Register(string cardNumber, decimal amount)
+        public async Task<Result<Card>> RegisterAsync(string cardNumber, decimal amount)
         {
             try
             {
