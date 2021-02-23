@@ -22,6 +22,11 @@ namespace TinyCards.Core.Service
         {
             try
             {
+                if (type == TransactionType.Undefined)
+                {
+                    return new Result<Transaction> { Code = ResultCode.Error, ErrorMessage = "Transaction type not provided" };
+                }
+
                 var card = await GetByNumberAsync(cardNumber);
                 if (card == null)
                 {
@@ -133,7 +138,7 @@ namespace TinyCards.Core.Service
                     }
                 };
                 _dbContext.Add(card);
-                _dbContext.Add(cardLimits);
+                _dbContext.AddRange(cardLimits);
                 await _dbContext.SaveChangesAsync();
                 return new Result<Card> { Code = ResultCode.Success, Data = card };
             }

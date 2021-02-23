@@ -8,6 +8,7 @@ namespace TinyCards.Core.Constant
 {
     public enum TransactionType
     {
+        Undefined = 0,
         CardPresent = 1,
         ECommerse = 2
     }
