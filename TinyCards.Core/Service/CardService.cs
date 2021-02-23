@@ -81,15 +81,26 @@ namespace TinyCards.Core.Service
 
         }
 
-        public async Task<Card> ChargeAsync(string cardNumber, decimal amount)
+        public async Task<Result<Transaction>> ChargeAsync(string cardNumber, decimal amount)
         {
-            var card = await _dbContext.Set<Card>()
-                .Where(c => c.Number == cardNumber)
-                .SingleOrDefaultAsync();
+            try
+            {
+                var card = await _dbContext.Set<Card>()
+                    .Where(c => c.Number == cardNumber)
+                    .SingleOrDefaultAsync();
 
-            card.Balance += amount;
-            await _dbContext.SaveChangesAsync();
-            return card; 
+                card.Balance += amount;
+
+                var transaction = new Transaction { Amount = -amount, Card = card, Type = 0, Timestamp = DateTime.Now, Id = Guid.NewGuid(), Details = "Charge" };
+                await _dbContext.AddAsync(transaction);
+
+                await _dbContext.SaveChangesAsync();
+                return new Result<Transaction> { Data = transaction, Code = ResultCode.Success };
+            }
+            catch (Exception e)
+            {
+                return new Result<Transaction> { Code = ResultCode.Error, ErrorMessage = e.Message };
+            }
         }
 
         public async Task<Card> GetByNumberAsync(string cardNumber)

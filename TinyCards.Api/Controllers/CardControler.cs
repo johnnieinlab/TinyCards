@@ -55,5 +55,18 @@ namespace TinyCards.Api.Controllers
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("Charge")]
+        public async Task<IActionResult> Charge(
+        [FromBody] AuthorizeCardRequest request)
+        {
+            var result = await _cardService.ChargeAsync(request.CardNumber, request.amount);
+            if (result.Code != ResultCode.Success)
+            {
+                return StatusCode((int)result.Code, result.ErrorMessage);
+            }
+            return Ok(result);
+        }
+
     }
 }
